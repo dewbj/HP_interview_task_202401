@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            Boncha AI
-        </title>
-        <link rel="icon" type="image/x-icon" href="/static/boncha.ico">
         <!-- Bootstrap 5 CSS -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,32 +18,17 @@
         {% include 'hp_model.html' %}
 
         <br>
-        <!-- <div class="mx-auto" style="width: 50%; padding-left: 8%">
-            <div class="chat-container">
-                <h1>Chat with AI</h1>
-                <div id="result"> </div>
-                <input type="text" id="message" name="message" placeholder="Type your message here">
-                <button onclick="sendMessage()">Send Message</button>
-            </div>       
-        </div> -->
 
         <div class="mx-auto" style="width: 50%">
             <br>
-            <h3> Source articles </h3>
-            <h5> Please select at least 1 article </h5>
-            <form id="sources">
-            </form>
             <div class="input-group mb-3">
                 <textarea id="prompt" name="prompt" type="text" class="form-control" placeholder="Type in the prompt here..." rows="1"></textarea>
                 <button class="btn btn-outline-secondary" id="button-addon2" onclick="sendMessage()"> Generate </button>    
             </div> 
-        <!-- <div id="result"> </div> -->
 
-        <!-- <div class="mx-auto" style="width: 50%"> -->
             <br>
             <h3> Result </h3>
             <div style="height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
-            <!-- <div style="height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;"> -->
                 <div id="result" style="white-space: pre-line;"></div>
                 
             </div> 
@@ -79,33 +60,12 @@
 
                 var reader = response.body.getReader();
                 var decoder = new TextDecoder('utf-8');
-                
-                // document.getElementById('result').innerHTML += `
-                //     <span class="input-group-text d-inline-flex p-2" id="basic-addon1"> User </span>
-                //     ` + "<br>" + message + "<br>" + `
-                //     <span class="input-group-text d-inline-flex p-2" id="basic-addon1"> AI </span>
-                //     ` + "<br>";
+
                 document.getElementById("result").innerHTML += `
                     <span class="input-group-text d-inline-flex p-2" id="basic-addon1"> User </span>
                     <br>` + message + "<br>" + `
                     <span class="input-group-text d-inline-flex p-2" id="basic-addon1"> AI </span>
-                    \n<div id="AI"></div>`;
-                // document.getElementById('result').innerHTML += "User: <br>" + message + "<br><br>GPT: <br>"
-
-                // reader.read().then(function processResult(result) {
-                //     if (result.done) {
-                //         document.getElementById('result').innerHTML += "<br><br>";
-                //         return;
-                //     }
-                //     let token = decoder.decode(result.value);
-                //     // if (token.endsWith('.') || token.endsWith('!') || token.endsWith('?')) {
-                //     //     document.getElementById('result').innerHTML += token + '<br>';
-                //     // } else {
-                //     //     document.getElementById('result').innerHTML += token + ' ';
-                //     // }
-                //     document.getElementById('result').innerHTML += token;
-                //     return reader.read().then(processResult);
-                // });
+                    <br><div id="AI"></div>`;
 
                 reader.read().then(function processResult(result) {
                     if (result.done) {
